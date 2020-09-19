@@ -14,3 +14,24 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
 
     return [...cartItems, { ...cartItemToAdd, quantity: 1 }]
 }
+
+export const removeItemFromCart = (cartItems, cartItemToRemove) => {
+
+    const toReturn = [];
+
+    cartItems.forEach(cartItem => {
+        cartItem.quantity !== 1 ? (
+            cartItem.id === cartItemToRemove.id
+                ? toReturn.push({ ...cartItem, quantity: cartItem.quantity - 1 })
+                : toReturn.push(cartItem)
+        ) : clearItemFromCart(cartItems, cartItemToRemove)
+    })
+
+    return toReturn;
+}
+
+export const clearItemFromCart = (cartItems, cartItemToClear) => {
+    return cartItems.filter(cartItem => (
+        cartItem.id !== cartItemToClear.id
+    ))
+}
