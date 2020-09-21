@@ -1,4 +1,4 @@
-export const shop_data = [
+export const collections = [
     {
         id: 1,
         title: 'Hats',
@@ -244,4 +244,4 @@ export const shop_data = [
             }
         ]
     }
-];
+]
